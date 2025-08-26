@@ -1,6 +1,6 @@
 CXX = g++
 
-CPLEX_DIR = /home/lucasparada20/CPLEX_Studio2211
+CPLEX_DIR = /some/path/to/Cplex
 
 CXXFLAGS = -O3 \
     -I$(CPLEX_DIR)/cplex/include \
