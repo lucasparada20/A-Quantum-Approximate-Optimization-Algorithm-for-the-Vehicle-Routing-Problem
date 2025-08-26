@@ -8,7 +8,7 @@ We model the Vehicle Routing Problem (VRP) as a Quadratic Unconstrained Binary O
 
 **(1) Objective (total travel cost)**
 
-$\min \;\; \sum_{(i,j)\in A} c_{ij}\,x_{ij}$
+$\min \ \sum_{(i,j)\in A} c_{ij}\,x_{ij}$
 
 where:
 - \(x_{ij}\in\{0,1\}\) is 1 if arc \((i,j)\) is used,
