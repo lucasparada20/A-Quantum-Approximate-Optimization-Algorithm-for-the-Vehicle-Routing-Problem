@@ -52,3 +52,7 @@ make
 
 ## The Python Source Code
 
+A modular implementation of QAOA is provided in the `src` directory. The modules are the following.
+
+* `Qubo.py`:
+
