@@ -54,5 +54,10 @@ make
 
 A modular implementation of QAOA is provided in the `src` directory. The modules are the following.
 
-* `Qubo.py`:
+* `Qubo.py`: Builds the QUBO model for a given distance matrix and number of vehicles using the following methods. `build_vrp_qubo()` resembles the C++ implementation in `main.cpp`, and returns the quadratic term matrix $Q$, the linear term array $h$, and the constant term. Next, `qubo_to_hamiltonian()` builds a Pennylane Hamiltonian object from the QUBO matrices. Lastly, the function `compute_qubo_value()` is a helper method that computes the Ising cost of a given solution provided in a bitstring Numpy ndarray.
+* `Qaoa.py`: Uses PennyLane's `default.qubit` simulator backend and SciPy optimizers to minimize the QUBO Hamiltonian. It also performs multiple optimization restarts to help avoid poor local minima.
+  * **`qaoa_layer(gamma, beta, H)`** – Applies one QAOA layer by evolving under the problem Hamiltonian `H` for time `gamma`, followed by RX rotations with angle `2*beta` on all qubits.  
+  * **`qaoa_circuit(params, H, n_wires)`** – Builds the full QAOA circuit with `p` alternating layers of cost and mixing unitaries, starting from the uniform superposition state \(|+\rangle^{\otimes n}\).  
+  * **`run(qubo_lin, qubo_quad, const_term, var_map, p=1, n_shots=10000)`** – Converts a QUBO into a Hamiltonian, executes the QAOA circuit on PennyLane’s `default.qubit` simulator, and uses classical optimization with multiple restarts to minimize the expected cost, returning samples, the best energy, and the optimal parameters.  
+
 
