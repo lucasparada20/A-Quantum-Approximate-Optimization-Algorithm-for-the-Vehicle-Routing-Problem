@@ -2,7 +2,7 @@
 
 ## Model Formulation
 
-We model the Vehicle Routing Problem (VRP) as a Quadratic Unconstrained Binary Optimization (QUBO) following the approach of these [authors](https://ieeexplore.ieee.org/document/9774961). Let graph $G=(V,A)$, with $V = N \cup \{0\}$ be the set of nodes including the depot $\{0\}$, and $A(0)$ be the set of arcs that connect the depot. We are given a fleet of $k$ vehicles. The model follows:
+We model the Vehicle Routing Problem (VRP) as a Quadratic Unconstrained Binary Optimization (QUBO) following the approach of these [authors](https://ieeexplore.ieee.org/document/9774961). Let graph $G=(V,A)$, with `V = N \cup \{0\}` be the set of nodes including the depot $\{0\}$, and $A(0)$ be the set of arcs that connect the depot. We are given a fleet of $k$ vehicles. The model follows:
 
 **(1) Objective (total travel cost)**
 $\min \ \sum_{(i,j)\in A} c_{ij}x_{ij}$
