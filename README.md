@@ -62,6 +62,14 @@ A modular implementation of QAOA is provided in the `src` directory. The modules
 * `Qaoa.py`: Uses PennyLane's `default.qubit` simulator backend and a SciPy optimizer to minimize the QUBO Hamiltonian. It also performs multiple optimization restarts to help avoid poor local minima.
   * **`qaoa_layer(gamma, beta, H)`** – Applies one QAOA layer by evolving under the problem Hamiltonian for time $\gamma$, followed by RX rotations with angle $2*\beta$ on all qubits.  
   * **`qaoa_circuit(params, H, n_wires)`** – Builds the complete QAOA circuit with $p$ alternating layers of cost and mixing unitaries, starting from the uniform superposition state $\|+\rangle^{\otimes n}\$.  
-  * **`run(qubo_lin, qubo_quad, const_term, var_map, p=1, n_shots=10000)`** – Converts a QUBO into a Hamiltonian, executes the QAOA circuit on PennyLane’s `default.qubit` simulator, and uses classical optimization with multiple restarts to minimize the expected cost, returning samples, the best energy, and the optimal parameters.  
+  * **`run(qubo_lin, qubo_quad, const_term, var_map, p=1, n_shots=10000)`** – Converts a QUBO into a Hamiltonian, executes the QAOA circuit on PennyLane’s `default.qubit` simulator, and uses classical optimization with multiple restarts to minimize the expected cost, returning samples, the best energy, and the optimal parameters.
+
+* `GraphOutils.py`: Provides utility functions for decoding, evaluating, and visualizing solutions produced by QAOA on the problem.
+  * **`decode_solution(bitstring, var_map, D=None)`** – Decodes a sampled bitstring into selected edges $(i,j)$, and optionally computes the total route cost if a distance matrix is provided.  
+  * **`compute_arc_cost(sample, edge_map, D)`** – Computes the travel cost of a QAOA solution by summing the costs of all arcs selected in the bitstring.  
+  * **`plot_solution_graph(edges, n_nodes)`** – Plots a directed graph representation of the decoded VRP tour using NetworkX and Matplotlib.  
+  * **`evaluate_solution(x, var_map, D, Q, h, const_term, edge_map, compute_qubo_value_fn)`** – Evaluates a full solution by decoding edges, computing route cost, QUBO objective value, arc costs, and penalties, and visualizes the resulting tour. Returns a dictionary with all relevant evaluation metrics.  
+
+  
 
 
