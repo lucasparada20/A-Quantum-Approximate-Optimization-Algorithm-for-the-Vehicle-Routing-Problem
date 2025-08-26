@@ -32,8 +32,7 @@ $\sum_{j \in A(0)} x_{j0} = k$
 &+ A \underbrace{\left( \sum_{j \in V \setminus \{0\}} x_{0j} - k \right)^{2}}_{\text{(4) depot out-degree}} \\[1em]
 &+ A \underbrace{\left( \sum_{j \in V \setminus \{0\}} x_{j0} - k \right)^{2}}_{\text{(5) depot in-degree}}
 \end{aligned}
-
-
+```
 
 ## QUBO Formulation for the VRP
 
