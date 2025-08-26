@@ -2,7 +2,7 @@
 
 ## Model Formulation
 
-We model the Vehicle Routing Problem (VRP) as a Quadratic Unconstrained Binary Optimization (QUBO). Let graph $G=(V,A)$, with $V=N\cup\{0\}$ be the set of nodes including the depot $\{0\}$, and $A(0)$ be the set of arcs that connect the depot. We are given a fleet of $k$ vehicles. The model follows:
+We model the Vehicle Routing Problem (VRP) as a Quadratic Unconstrained Binary Optimization (QUBO) following the approach of these [authors](https://ieeexplore.ieee.org/document/9774961). Let graph $G=(V,A)$, with $V=N\cup\{0\}$ be the set of nodes including the depot $\{0\}$, and $A(0)$ be the set of arcs that connect the depot. We are given a fleet of $k$ vehicles. The model follows:
 
 **(1) Objective (total travel cost)**
 $\min \ \sum_{(i,j)\in A} c_{ij}x_{ij}$
@@ -23,6 +23,10 @@ $\sum_{j \in A(0)} x_{0j} = k$
 **(5) Number of vehicles returning to the depot**  
 $\sum_{j \in A(0)} x_{j0} = k$
 
+In practice, this is not a classical VRP as the subtour elimination constraints are lacking. The problem in (1)-(5) resembles an assignment problem, but it is a simple enough problem to embed in a QAOA for operations research practitioners transitioning into quantum information technologies.
+
+## QUBO Formulation for the VRP
+
 ```math
 \begin{aligned}
 \min_{x \in \{0,1\}} \quad 
@@ -33,7 +37,5 @@ $\sum_{j \in A(0)} x_{j0} = k$
 &+ A \underbrace{\left( \sum_{j \in V \setminus \{0\}} x_{j0} - k \right)^{2}}_{\text{(5) depot in-degree}}
 \end{aligned}
 ```
-
-## QUBO Formulation for the VRP
 
 
