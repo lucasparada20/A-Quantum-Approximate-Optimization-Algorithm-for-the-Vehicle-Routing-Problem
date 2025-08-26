@@ -54,10 +54,14 @@ make
 
 A modular implementation of QAOA is provided in the `src` directory. The modules are the following.
 
-* `Qubo.py`: Builds the QUBO model for a given distance matrix and number of vehicles using the following methods. `build_vrp_qubo()` resembles the C++ implementation in `main.cpp`, and returns the quadratic term matrix $Q$, the linear term array $h$, and the constant term. Next, `qubo_to_hamiltonian()` builds a Pennylane Hamiltonian object from the QUBO matrices. Lastly, the function `compute_qubo_value()` is a helper method that computes the Ising cost of a given solution provided in a bitstring Numpy ndarray.
+* `Qubo.py`: Encodes the problem in (1)-(5) as a QUBO model and provides utilities to map it into an Ising Hamiltonian for use in quantum circuits.
+  * **`build_vrp_qubo(D, k, A, print_matrices=False)`** – Constructs the QUBO formulation of the distance matrix $D$, number of vehicles $k$, and penalty weight $A$. Returns linear and quadratic QUBO coefficients, the constant term, and a variable-to-qubit index map.  
+  * **`qubo_to_hamiltonian(qubo_lin, qubo_quad, const, var_index_map)`** – Converts the QUBO coefficients into a PennyLane Hamiltonian, mapping binary variables to Pauli-Z operators in the Ising form.  
+  * **`compute_qubo_value(sample, Q, h, constant)`** – Evaluates the QUBO objective value for a given binary solution vector using $x^T Q x + h^T x + \text{constant}$.
+   
 * `Qaoa.py`: Uses PennyLane's `default.qubit` simulator backend and a SciPy optimizer to minimize the QUBO Hamiltonian. It also performs multiple optimization restarts to help avoid poor local minima.
   * **`qaoa_layer(gamma, beta, H)`** – Applies one QAOA layer by evolving under the problem Hamiltonian for time $\gamma$, followed by RX rotations with angle $2*\beta$ on all qubits.  
-  * **`qaoa_circuit(params, H, n_wires)`** – Builds the full QAOA circuit with $p$ alternating layers of cost and mixing unitaries, starting from the uniform superposition state $\|+\rangle^{\otimes n}\$.  
+  * **`qaoa_circuit(params, H, n_wires)`** – Builds the complete QAOA circuit with $p$ alternating layers of cost and mixing unitaries, starting from the uniform superposition state $\|+\rangle^{\otimes n}\$.  
   * **`run(qubo_lin, qubo_quad, const_term, var_map, p=1, n_shots=10000)`** – Converts a QUBO into a Hamiltonian, executes the QAOA circuit on PennyLane’s `default.qubit` simulator, and uses classical optimization with multiple restarts to minimize the expected cost, returning samples, the best energy, and the optimal parameters.  
 
 
