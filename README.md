@@ -23,6 +23,7 @@ $\sum_{j \in A(0)} x_{0j} = k$
 **(5) Number of vehicles returning to the depot**  
 $\sum_{j \in A(0)} x_{j0} = k$
 
+```math
 \[
 \begin{aligned}
 \min_{x \in \{0,1\}} \quad 
@@ -33,6 +34,7 @@ $\sum_{j \in A(0)} x_{j0} = k$
 &+ \underbrace{\lambda_{\text{dep}} \left( \sum_{j \in V \setminus \{0\}} x_{j0} - k \right)^{2}}_{\text{(5) depot in-degree}}
 \end{aligned}
 \]
+```
 
 
 ## QUBO Formulation for the VRP
