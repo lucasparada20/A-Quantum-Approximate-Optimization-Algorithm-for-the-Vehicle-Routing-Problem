@@ -38,7 +38,7 @@ In practice, this is not a VRP as the subtour elimination constraints are lackin
 \end{aligned}
 ```
 
-There is a `main.cpp` file that will build and solve the QUBO formulation. The code requires a hardcoded distance matrix and the parameter $k$. In the current implementation, there are two distance matrices hardcoded, so you can uncomment one to test it. To compile and run the code, you first need to give the path to your Cplex library in the `Makefile` here:
+There is a C`++` `main.cpp` file that will build and solve the QUBO formulation using the Cplex library. The code requires a hardcoded distance matrix and the parameter $k$. In the current implementation, there are two distance matrices hardcoded, so you can uncomment one to test it. To compile and run the code, you first need to give the path to your Cplex library in the `Makefile` here:
 
 ```bash
 CPLEX_DIR = /some/path/to/Cplex
@@ -49,4 +49,6 @@ Next, compile, link, and run:
 make
 ./vrp_qubo
 ```
+
+## The Python Source Code
 
