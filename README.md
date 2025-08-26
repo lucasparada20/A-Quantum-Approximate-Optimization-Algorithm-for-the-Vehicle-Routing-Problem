@@ -52,7 +52,13 @@ make
 
 ## The Python Source Code
 
-A modular implementation of QAOA is provided in the `src` directory. The modules are the following.
+A modular implementation of QAOA is provided in the `src` directory. To call the code, use the following command inside the `src` directory:
+
+```bash
+./main
+```
+
+The modules are as follows.
 
 * `Qubo.py`: Encodes the problem in (1)-(5) as a QUBO model and provides utilities to map it into an Ising Hamiltonian for use in quantum circuits.
   * **`build_vrp_qubo(D, k, A, print_matrices=False)`** – Constructs the QUBO formulation of the distance matrix $D$, number of vehicles $k$, and penalty weight $A$. Returns linear and quadratic QUBO coefficients, the constant term, and a variable-to-qubit index map.  
