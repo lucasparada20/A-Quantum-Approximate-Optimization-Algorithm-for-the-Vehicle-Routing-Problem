@@ -24,16 +24,14 @@ $\sum_{j \in A(0)} x_{0j} = k$
 $\sum_{j \in A(0)} x_{j0} = k$
 
 ```math
-\[
 \begin{aligned}
 \min_{x \in \{0,1\}} \quad 
 & \underbrace{\sum_{i \in V} \sum_{\substack{j \in V \\ j \neq i}} c_{ij}\, x_{ij}}_{\text{(1) travel cost}} \\[1em]
-&+ \underbrace{\lambda_{\text{out}} \sum_{i \in N} \left( \sum_{\substack{j \in V \\ j \neq i}} x_{ij} - 1 \right)^{2}}_{\text{(2) outgoing arc constraints}} \\[1em]
-&+ \underbrace{\lambda_{\text{in}} \sum_{i \in N} \left( \sum_{\substack{j \in V \\ j \neq i}} x_{ji} - 1 \right)^{2}}_{\text{(3) incoming arc constraints}} \\[1em]
-&+ \underbrace{\lambda_{\text{dep}} \left( \sum_{j \in V \setminus \{0\}} x_{0j} - k \right)^{2}}_{\text{(4) depot out-degree}} \\[1em]
-&+ \underbrace{\lambda_{\text{dep}} \left( \sum_{j \in V \setminus \{0\}} x_{j0} - k \right)^{2}}_{\text{(5) depot in-degree}}
+&+ A \sum_{i \in N} \left( \sum_{\substack{j \in V \\ j \neq i}} x_{ij} - 1 \right)^{2}}_{\text{(2) outgoing arc constraints}} \\[1em]
+&+ A \sum_{i \in N} \left( \sum_{\substack{j \in V \\ j \neq i}} x_{ji} - 1 \right)^{2}}_{\text{(3) incoming arc constraints}} \\[1em]
+&+ A \left( \sum_{j \in V \setminus \{0\}} x_{0j} - k \right)^{2}}_{\text{(4) depot out-degree}} \\[1em]
+&+ A \left( \sum_{j \in V \setminus \{0\}} x_{j0} - k \right)^{2}}_{\text{(5) depot in-degree}}
 \end{aligned}
-\]
 ```
 
 
