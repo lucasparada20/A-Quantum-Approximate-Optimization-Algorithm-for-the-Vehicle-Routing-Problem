@@ -69,7 +69,10 @@ if __name__ == "__main__":
     
     print("========= Fixed Solution Evaluation =========")
     #x1 = np.array([1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0])
-    x2 = np.array([1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0])
+    x2 = np.array([1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0]) #Best solution for D2
+    print("len(bitstring):", len(x2))
+    print("len(inv_map):", len(var_map))
+    print("inv_map keys:", sorted(var_map.keys()))    
     results = utils.evaluate_solution(
         x2,
         var_map,
@@ -80,4 +83,4 @@ if __name__ == "__main__":
         edge_map,
         compute_qubo_value_fn=qubo.compute_qubo_value
     )
-    print(results)
+    print(results)    
