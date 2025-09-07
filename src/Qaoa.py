@@ -56,7 +56,7 @@ class QAOA:
             return energy
 
         best_val, best_params = float("inf"), None
-        for seed in range(4):  # number of restarts
+        for seed in range(1):  # number of restarts
             init_params = np.random.uniform(0, np.pi, size=(2 * p,))
             print(f"\n--- Restart {seed+1} ---")
             res = minimize(cost_fn_verbose, init_params, method="COBYLA", options={"maxiter": 5000})
