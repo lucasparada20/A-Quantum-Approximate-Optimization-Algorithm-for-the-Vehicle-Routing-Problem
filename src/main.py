@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     # Run QAOA
     samples, min_cost, opt_params = qaoa.run(
-        qubo_lin, qubo_quad, const_term, var_map, p=13
+        qubo_lin, qubo_quad, const_term, var_map, p=6
     )
 
     # Build edge_map once
